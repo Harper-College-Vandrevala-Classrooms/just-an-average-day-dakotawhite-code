@@ -1,5 +1,8 @@
 package com.csc;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class Calculator {
 
     public static int maximumUsingForLoop(int[] nums) {
@@ -50,6 +53,22 @@ public class Calculator {
         return java.util.Arrays.stream(nums).average().getAsDouble();
       }
 
+      public static int[] evensonly(int[] nums) {
+        return IntStream.of(nums).filter(num -> num % 2 == 0).toArray();
+      }
+
+      public static int[] oddsonly(int[] nums) {
+        return IntStream.of(nums).filter(num -> num % 2 != 0).toArray();
+      }
+
+      public static int[] incrementfive(int[] nums) {
+        return IntStream.of(nums).map(num -> num + 5).toArray();
+    }
+
+    public static int[] incrementsquared(int[] nums) {
+        return IntStream.of(nums).map(num -> num*num).toArray();
+    }
+
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
 
@@ -64,5 +83,14 @@ public class Calculator {
         System.out.println("Minimum: " + minimumUsingStream(nums));
         System.out.println("Sum: " + sumUsingStream(nums));
         System.out.println("Average: " + averageUsingStream(nums));
+
+        int[] filtereeven = evensonly(nums);
+        System.out.println("Filtered Even Numbers: " + java.util.Arrays.toString(filtereeven));
+        int[] filterodd = oddsonly(nums);
+        System.out.println("Filtered Odd Numbers: " + java.util.Arrays.toString(filterodd));
+        int[] five = incrementfive(nums);
+        System.out.println("Incremented Numbers: " + Arrays.toString(five));
+        int[] squared = incrementsquared(nums);
+        System.out.println("Incremented Numbers: " + Arrays.toString(squared));
     }
 }
